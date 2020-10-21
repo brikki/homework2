@@ -34,7 +34,7 @@ public class FileProcessor {
         try (final Scanner scanner = new Scanner(file, defaultCharset())) {
             while (scanner.hasNext()) {
                 final List<String> lines = new ArrayList<>();
-                final List <Pair<String, Integer>> resultLine = new ArrayList<>();
+                final List<Pair<String, Integer>> resultLine = new ArrayList<>();
                 while (lines.size() < CHUNK_SIZE && scanner.hasNextLine()) {
                     String string = scanner.nextLine();
                     lines.add(string);

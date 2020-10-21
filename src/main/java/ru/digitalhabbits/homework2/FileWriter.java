@@ -27,7 +27,7 @@ public class FileWriter
     @Override
     public void run() {
         logger.info("Started writer thread {}", currentThread().getName());
-        try(final java.io.FileWriter writer = new java.io.FileWriter(resultFileName)) {
+        try (final java.io.FileWriter writer = new java.io.FileWriter(resultFileName)) {
             while (!currentThread().isInterrupted()) {
                 List<Pair<String, Integer>> pairs = exchanger.exchange(null);
                 for (Pair<String, Integer> pair : pairs) {
@@ -35,7 +35,7 @@ public class FileWriter
                 }
                 writer.flush();
             }
-        } catch(IOException | InterruptedException e){
+        } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
         logger.info("Finish writer thread {}", currentThread().getName());
